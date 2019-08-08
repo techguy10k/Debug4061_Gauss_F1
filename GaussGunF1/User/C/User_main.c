@@ -10,10 +10,10 @@
 //用户头文件
 #include "LCD.h"
 #include "User_Uart.h"
-
+#include "KeyPad.h"
 //用户常量
 extern const uint8_t LCDtable_NVIDIA[8][192];
-
+uint16_t key=0x00;
 
 
 void User_main(void)
@@ -29,8 +29,9 @@ void User_main(void)
 
 	while(1)
 	{
+		key = Key_scan();
 		LCD_UpdateAllPixel((uint8_t*)LCDtable_NVIDIA);
-		HAL_Delay(1000);
+//		HAL_Delay(1000);
 		HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_9);
 	}
 	

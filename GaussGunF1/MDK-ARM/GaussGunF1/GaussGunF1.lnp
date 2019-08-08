@@ -29,6 +29,7 @@
 "gaussgunf1\user_pwm.o"
 "gaussgunf1\user_pid.o"
 "gaussgunf1\user_callback.o"
+"gaussgunf1\keypad.o"
 --library_type=microlib --strict --scatter "GaussGunF1\GaussGunF1.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
