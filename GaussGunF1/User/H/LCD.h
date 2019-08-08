@@ -30,8 +30,8 @@ void LCD_SetPointerPositon(uint8_t PageAddress,uint8_t ColumnAddress);
 void LCD_UpdateAllPixel(uint8_t* Address);
 /* LCD初始化 */
 void LCD_Init(void);
-
-
+/* 写一定长度图像 */
+void LCD_WriteLine(uint8_t* data,uint16_t size,uint8_t PosY,uint8_t PosX);
 
 
 
