@@ -11,6 +11,7 @@
 #include "LCD.h"
 #include "User_Uart.h"
 #include "KeyPad.h"
+#include "GaussGun.h"
 //用户常量
 extern const uint8_t LCDtable_NVIDIA[8][192];
 uint16_t key=0x00;
@@ -31,8 +32,12 @@ void User_main(void)
 	{
 		key = Key_scan();
 		LCD_UpdateAllPixel((uint8_t*)LCDtable_NVIDIA);
-//		HAL_Delay(1000);
-		HAL_GPIO_TogglePin(GPIOB,GPIO_PIN_9);
+		if(key == 2)
+		{
+			GaussGun_Fire(5000);
+			HAL_Delay(3000);
+		}	
+		
 	}
 	
 }

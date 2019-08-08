@@ -1,5 +1,5 @@
-gaussgunf1/user_main.o: ..\User\C\User_main.c ..\User\H\User_main.h \
-  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h \
+gaussgunf1/gaussgun.o: ..\User\C\GaussGun.c ..\User\H\GaussGun.h \
+  ..\Inc\main.h ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h \
   ..\Inc\stm32f1xx_hal_conf.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_rcc.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_def.h \
@@ -27,10 +27,5 @@ gaussgunf1/user_main.o: ..\User\C\User_main.c ..\User\H\User_main.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_spi.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h \
-  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h ..\Inc\main.h \
-  ..\Inc\gpio.h ..\Inc\main.h ..\Inc\spi.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Inc\usart.h \
-  ..\Inc\tim.h ..\User\H\LCD.h ..\User\H\User_Uart.h ..\User\H\KeyPad.h \
-  ..\User\H\GaussGun.h
+  ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h ..\Inc\tim.h \
+  ..\Inc\main.h
