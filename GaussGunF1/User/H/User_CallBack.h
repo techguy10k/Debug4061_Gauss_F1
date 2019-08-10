@@ -11,5 +11,6 @@
 
 //用户头文件
 #include "User_Uart.h"
+#include "User_JY901.h"
 
 #endif

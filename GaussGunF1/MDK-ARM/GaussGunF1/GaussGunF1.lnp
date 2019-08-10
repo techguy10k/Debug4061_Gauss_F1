@@ -31,6 +31,9 @@
 "gaussgunf1\user_callback.o"
 "gaussgunf1\keypad.o"
 "gaussgunf1\gaussgun.o"
+"gaussgunf1\user_check.o"
+"gaussgunf1\timer.o"
+"gaussgunf1\mricrostepdriver.o"
 --library_type=microlib --strict --scatter "GaussGunF1\GaussGunF1.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

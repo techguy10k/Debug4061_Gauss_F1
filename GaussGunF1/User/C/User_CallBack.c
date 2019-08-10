@@ -23,6 +23,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	if(huart->Instance == USART1)
 	{
 		_GetErrorUartCallBack();
+		//User_NewDistantUart_Init();
 	}
 	
 	/* 串口2中断部分 */
@@ -34,5 +35,14 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	
 }
 
+
+///* I2C 总回调函数 */
+//void HAL_I2C_MemRxCpltCallback(I2C_HandleTypeDef *hi2c)
+//{
+//	if(hi2c->Instance == I2C1)
+//	{
+//		User_JY901_DMARx_CallBack();
+//	}
+//}
 
 

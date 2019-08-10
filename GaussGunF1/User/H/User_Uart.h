@@ -46,4 +46,8 @@ int16_t Get_CoordinateYResult(void);
 /* 命令查询函数 返回当前调试串口的指令 */
 uint8_t Get_DebugCommand(void);
 
+/* 新误差获取函数 */
+void User_NewDistantUart_Init(void);
+
+
 #endif

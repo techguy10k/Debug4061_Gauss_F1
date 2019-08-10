@@ -32,5 +32,8 @@ gaussgunf1/user_main.o: ..\User\C\User_main.c ..\User\H\User_main.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Inc\usart.h \
-  ..\Inc\tim.h ..\User\H\LCD.h ..\User\H\User_Uart.h ..\User\H\KeyPad.h \
-  ..\User\H\GaussGun.h
+  ..\Inc\tim.h ..\User\H\LCD.h ..\User\H\User_Uart.h \
+  ..\User\H\User_PID.h ..\User\H\User_PWM.h ..\User\H\User_Uart.h \
+  ..\User\H\KeyPad.h ..\User\H\GaussGun.h ..\User\H\User_Check.h \
+  ..\User\H\MricroStepDriver.h ..\User\H\sys.h ..\User\H\Timer.h \
+  ..\User\H\MricroStepDriver.h ..\User\H\User_JY901.h

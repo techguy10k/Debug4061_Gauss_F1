@@ -32,8 +32,8 @@ void LCD_UpdateAllPixel(uint8_t* Address);
 void LCD_Init(void);
 /* 写一定长度图像 */
 void LCD_WriteLine(uint8_t* data,uint16_t size,uint8_t PosY,uint8_t PosX);
-
-
+/* 清空屏幕 */
+void LCD_Clear(void);
 
 
 

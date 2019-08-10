@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xE,USE_HAL_DRIVER,STM32F103xE</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;              ../Drivers/STM32F1xx_HAL_Driver/Inc;              ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;              ../Drivers/CMSIS/Device/ST/STM32F1xx/Include;              ../Drivers/CMSIS/Include;              ..\User\H</IncludePath>
+              <IncludePath>../Inc;                                                      ../Drivers/STM32F1xx_HAL_Driver/Inc;                                                      ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;                                                      ../Drivers/CMSIS/Device/ST/STM32F1xx/Include;                                                      ../Drivers/CMSIS/Include;                                                      ..\User\H</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -563,6 +563,21 @@
               <FileType>1</FileType>
               <FilePath>..\User\C\GaussGun.c</FilePath>
             </File>
+            <File>
+              <FileName>User_Check.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\C\User_Check.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\C\Timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>MricroStepDriver.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\C\MricroStepDriver.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -607,6 +622,26 @@
               <FileName>GaussGun.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\User\H\GaussGun.h</FilePath>
+            </File>
+            <File>
+              <FileName>User_Check.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\H\User_Check.h</FilePath>
+            </File>
+            <File>
+              <FileName>MricroStepDriver.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\H\MricroStepDriver.h</FilePath>
+            </File>
+            <File>
+              <FileName>sys.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\H\sys.h</FilePath>
+            </File>
+            <File>
+              <FileName>Timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\User\H\Timer.h</FilePath>
             </File>
           </Files>
         </Group>

@@ -4,14 +4,16 @@
 //公有变量
 
 //私有变量
-static uint8_t _GetErrorRXBuffer[7] = {0};
+// uint8_t _GetErrorRXBuffer[10] = {0};
+// uint8_t _GetErrorRXVal = 0;
+ uint8_t _GetErrorRXBuffer[7] = {0};
 static uint8_t _GetCommandRXBuffer[1] = {0};
 static uint8_t _GetDistantRxBuffer[12] = {0};
 static uint8_t _GetDistantRxVal = 0;
 static uint8_t _GetDistantStatus = 0;
  float   _GetDistantResults = 0.0; 
 static uint8_t _GetDistantUpdateStatus = 0;
-static int16_t Coordinate1_One = 0 , Coordinate1_Two = 0;
+int16_t Coordinate1_One = 0 , Coordinate1_Two = 0;
 static uint8_t CommandUpdateStatus = 0;
 
 uint8_t _DebugCommand = 0;
@@ -47,6 +49,7 @@ int16_t Get_CoordinateYResult(void)
 /* 误差获取串口 串口1 HC12串口 初始化 */
 void User_GetErrorUart_Init(void)
 {
+	//HAL_UART_Receive_IT(&huart1,&_GetErrorRXVal,1);
 	HAL_UART_Receive_IT(&huart1,_GetErrorRXBuffer,7);
 }
 
@@ -117,6 +120,56 @@ void _GetErrorUartCallBack(void)
 	}
 	
 }
+
+
+///* 新误差获取函数 */
+//void User_NewDistantUart_Init(void)
+//{
+//	static uint8_t counter = 0;
+//	uint8_t Coordinate1[3] ={0} ,Coordinate2[3] = {0};
+//	uint8_t temp = 0 , temp2 = 0;
+//	uint8_t *p = NULL;
+//	
+//	_GetErrorRXBuffer[counter] = _GetErrorRXVal;
+//	counter ++;
+//	
+//	if(_GetErrorRXVal == '\n')
+//	{
+//		//在第7位 or 以后出现\n
+//		if((counter - 0) > 6)
+//		{
+//			p = &_GetErrorRXBuffer[counter] - 7;
+//			//拷贝前三个ASCII字符到坐标一字符串 后三个到坐标二字符串
+//			memcpy(Coordinate1,p,3);
+//			memcpy(Coordinate2,(p + 3),3);
+//			//转换字符串到整数
+//			Coordinate1_One = atoi((const char*)Coordinate1);
+//			Coordinate1_Two = atoi((const char*)Coordinate2);
+//			//重新开启接收中断 等待下一次过程
+//			HAL_UART_Receive_IT(&huart1,_GetErrorRXBuffer,1);
+//			counter = 0;
+//			//收到新指令立即执行PID
+//			//PIDOut();
+//	
+//		}
+//		else
+//		{
+//			memset(_GetErrorRXBuffer,0x00,10);
+//			counter = 0;
+//			HAL_UART_Receive_IT(&huart1,_GetErrorRXBuffer,1);
+//		}
+//		
+//	}
+//	else
+//	{
+//		if(counter >= 9)
+//		{
+//			memset(_GetErrorRXBuffer,0x00,10);
+//			counter = 0;
+//		}
+//	}
+//	HAL_UART_Receive_IT(&huart1,_GetErrorRXBuffer,1);
+//}
 
 
 /* 命令获取串口的中断服务函数 */

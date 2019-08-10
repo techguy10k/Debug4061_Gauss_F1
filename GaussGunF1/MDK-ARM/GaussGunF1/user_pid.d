@@ -33,4 +33,6 @@ gaussgunf1/user_pid.o: ..\User\C\User_PID.c ..\User\H\User_PID.h \
   ..\Inc\main.h ..\User\H\User_Uart.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h ..\Inc\usart.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h \
+  ..\User\H\MricroStepDriver.h ..\User\H\sys.h ..\User\H\Timer.h \
+  ..\Inc\gpio.h ..\User\H\MricroStepDriver.h
