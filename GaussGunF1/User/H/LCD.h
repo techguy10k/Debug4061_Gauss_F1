@@ -34,8 +34,12 @@ void LCD_Init(void);
 void LCD_WriteLine(uint8_t* data,uint16_t size,uint8_t PosY,uint8_t PosX);
 /* 清空屏幕 */
 void LCD_Clear(void);
-
-
+/* 显示8*8阿拉伯数字 */
+void LCD_Display8_8Number(uint8_t number);
+/* 打印8*8 正号 + */
+void LCD_Display_Positive(void);
+/* 打印8*8 负号 - */
+void LCD_Display_Negative(void);
 
 
 

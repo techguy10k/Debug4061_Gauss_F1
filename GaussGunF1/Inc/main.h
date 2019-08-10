@@ -76,8 +76,8 @@ void Error_Handler(void);
 #define KEYx0_GPIO_Port GPIOC
 #define KEYx1_Pin GPIO_PIN_5
 #define KEYx1_GPIO_Port GPIOC
-#define FIRE_Pin GPIO_PIN_7
-#define FIRE_GPIO_Port GPIOE
+#define FIRE_Pin GPIO_PIN_1
+#define FIRE_GPIO_Port GPIOB
 #define KEYx2_Pin GPIO_PIN_6
 #define KEYx2_GPIO_Port GPIOC
 #define KEYx3_Pin GPIO_PIN_7

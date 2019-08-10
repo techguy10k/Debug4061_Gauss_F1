@@ -67,7 +67,7 @@ void turn(void)
 	if(stop_flag==0)
 	{
 		Locate_RunStep(1,800,100);
-		if(Get_CoordinateXResult()>=297&&Get_CoordinateXResult()<303)
+		if(Get_CoordinateXResult()>=295&&Get_CoordinateXResult()<305)
 		{
 			stop_flag=1;
 			stop=0;

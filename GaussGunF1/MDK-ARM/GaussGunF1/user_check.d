@@ -28,4 +28,10 @@ gaussgunf1/user_check.o: ..\User\C\User_Check.c ..\User\H\User_Check.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h ..\Inc\main.h \
-  ..\Inc\spi.h ..\Inc\main.h ..\User\H\KeyPad.h ..\User\H\GaussGun.h
+  ..\Inc\spi.h ..\Inc\main.h ..\User\H\KeyPad.h ..\User\H\GaussGun.h \
+  ..\User\H\MricroStepDriver.h ..\User\H\sys.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Inc\tim.h \
+  ..\User\H\Timer.h ..\Inc\gpio.h ..\User\H\MricroStepDriver.h \
+  ..\User\H\User_Uart.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\Inc\usart.h
