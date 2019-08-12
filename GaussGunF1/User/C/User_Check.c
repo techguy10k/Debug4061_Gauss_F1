@@ -314,7 +314,7 @@ void DistantFire(uint16_t distant_cm)
 		distant_cm = 200;
 	}
 	
-	Set_PWM = (uint16_t)(-5.4257*distant_cm + 2663.7);
+	Set_PWM = (uint16_t)((-5.4257*distant_cm + 2663.7) * 1.2);
 	__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,Set_PWM);
 	HAL_Delay(1000);
 	GaussGun_Fire(4350);
