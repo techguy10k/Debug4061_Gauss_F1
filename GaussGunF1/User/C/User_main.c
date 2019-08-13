@@ -36,16 +36,23 @@ void User_main(void)
 	LCD_Init();
 	LCD_UpdateAllPixel((uint8_t*)LCDtable_NVIDIA);
 	HAL_Delay(1000);
-	
+	__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,1200);
+	HAL_Delay(1000);
 	/* 让屏幕全白 */
 	LCD_Clear();
 
 	while(1)
 	{
-//		__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,500);
-//		HAL_Delay(2000);
-//		__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,2500);
-//		HAL_Delay(2000);  
+		//AutoTurnFire();
+		//__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,500);
+//		stop=0;
+//	Locate_RunStep(0,16,100);
+//	HAL_Delay(10000);
+//			stop=0;
+//			flag=0;
+//			HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
+//			HAL_TIM_Base_Stop_IT(&htim2);
+//		while(1);
 		Check();
 //		d233 = Get_CoordinateXResult();
 		//turn();

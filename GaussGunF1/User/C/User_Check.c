@@ -192,12 +192,19 @@ void DealBasic3(void)
 	if(Angle > 0)
 	{
 		stop = 0;
-		Locate_RunStep(1,(uint16_t)(8.2*Angle),100);
+		Locate_RunStep(1,(uint16_t)(16*Angle),100);
+//		HAL_Delay(30000);
+//					HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
+//			HAL_TIM_Base_Stop_IT(&htim2);
 	}
 	else
 	{
 		stop = 0;
-		Locate_RunStep(0,(uint16_t)(8.2*abs(Angle)),100);		
+		Locate_RunStep(0,(uint16_t)(16*abs(Angle)),100);
+//		HAL_Delay(30000);
+//					HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
+//			HAL_TIM_Base_Stop_IT(&htim2);		
+		
 	}
 	HAL_Delay(5000);
 	DistantFire(Distant);
@@ -304,7 +311,7 @@ uint8_t DigitDialIn(void)
 void DistantFire(uint16_t distant_cm)
 {
 	volatile uint16_t Set_PWM = 0;
-	
+	volatile uint16_t Set_UsTIME=0;
 	if(distant_cm > 300)
 	{
 		distant_cm = 300;
@@ -313,11 +320,21 @@ void DistantFire(uint16_t distant_cm)
 	{
 		distant_cm = 200;
 	}
-	
-	Set_PWM = (uint16_t)(-5.4257*distant_cm + 2663.7);
+	if(distant_cm>250)
+	{
+	Set_PWM = (uint16_t)(-105.83*distant_cm/100 + 1324.2);
 	__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,Set_PWM);
 	HAL_Delay(1000);
 	GaussGun_Fire(4350);
+	}
+	else if(distant_cm<=250)
+	{
+		__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,1200);
+		HAL_Delay(1000);
+		Set_UsTIME=(uint16_t)(803.2*distant_cm/100 + 2367.9);
+		GaussGun_Fire(Set_UsTIME);
+	}
+	
 
 }
 
@@ -325,7 +342,9 @@ void DistantFire(uint16_t distant_cm)
 void AutoTurnFire(void)
 {
 	volatile float distant = 0;
-	
+	stop=0;
+	Locate_RunStep(0,16*30,100);
+	HAL_Delay(2000);
 	while(stop_flag==0)
 	{
 		Locate_RunStep(1,1000,50);
