@@ -17,21 +17,25 @@ Library Manager: ArmAr.exe V6.12
 Hex Converter:   FromElf.exe V6.12
 CPU DLL:         SARMCM3.DLL V5.28.0.0
 Dialog DLL:      DCM.DLL V1.17.3.0
-Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.6.0
+Target DLL:      Segger\JL2CM3.dll V2.99.36.0
 Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
 C:\Users\pan39\Desktop\Debug4061_Gauss_F1\GaussGunF1\MDK-ARM\GaussGunF1.uvprojx
-Project File Date:  08/11/2019
+Project File Date:  08/14/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.12', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'GaussGunF1'
-compiling User_Check.c...
+../User/C/User_main.c(58): warning: implicit declaration of function 'DealAdvance2' is invalid in C99 [-Wimplicit-function-declaration]
+                DealAdvance2();
+                ^
+1 warning generated.
+compiling User_main.c...
 linking...
-Program Size: Code=14766 RO-data=2854 RW-data=16 ZI-data=1624  
+Program Size: Code=12290 RO-data=2030 RW-data=16 ZI-data=1632  
 FromELF: creating hex file...
-"GaussGunF1\GaussGunF1.axf" - 0 Error(s), 0 Warning(s).
+"GaussGunF1\GaussGunF1.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -54,7 +58,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.3.0
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

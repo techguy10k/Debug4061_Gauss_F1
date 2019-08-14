@@ -7,8 +7,12 @@
 
 #include "tim.h"
 
+int adv2=0;
 extern int stop_flag;
 extern float  _GetDistantResults;
+int flag1=0;
+int stop_flag0=0;
+int stop_flag1=0;
 
 extern const uint8_t Basic1Table[];
 extern const uint8_t Basic2Table[];
@@ -237,8 +241,40 @@ void DealAdvance1(void)
 }
 
 
+
 void DealAdvance2(void)
 {
+	volatile float Set_PWM;
+	LCD_Clear();
+	
+//	while(Key_scan() != 0);	
+	//	while(Key_scan() == 0);	
+	Set_PWM = (uint16_t)(-105.83*2.5 + 1324.2);
+	__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,Set_PWM);
+	
+while(1)
+{
+
+			if(flag==0)
+	{
+		HAL_Delay(200);
+		stop=0;
+	}
+	Locate_RunStep(flag1,960,100);
+	if(stop_flag1==0)
+	{
+	if(Get_CoordinateXResult()>290&&Get_CoordinateXResult()<=310)
+	{
+		HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_10);
+		GaussGun_Fire(4350);
+		stop_flag1=1;
+	}
+	}
+	else
+	{
+		
+	}
+}
 	
 }
 
@@ -342,12 +378,24 @@ void DistantFire(uint16_t distant_cm)
 void AutoTurnFire(void)
 {
 	volatile float distant = 0;
-	stop=0;
-	Locate_RunStep(0,16*30,100);
-	HAL_Delay(2000);
+	
+	//flag1=1;
+	while(stop_flag0==0)
+	{
+		Locate_RunStep(flag,480,500);
+		HAL_Delay(3000);
+		stop=0;
+		//flag=0;
+		
 	while(stop_flag==0)
 	{
-		Locate_RunStep(1,1000,50);
+		//last_flag=flag1;
+		Locate_RunStep(flag1,960,100);
+		if(flag==0)
+		{
+			HAL_Delay(200);
+			stop=0;
+		}
 		if(Get_CoordinateXResult()>=295&&Get_CoordinateXResult()<305)
 		//if(_GetDistantResults < 3.40)
 		{
@@ -357,10 +405,15 @@ void AutoTurnFire(void)
 			HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
 			HAL_TIM_Base_Stop_IT(&htim2);
 		}
+		
 	}
 	
 	HAL_Delay(2000);
 	distant = _GetDistantResults - 0.30;
 	DistantFire((uint16_t)(distant * 100));
+	HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_10);
+	stop_flag0=1;
+}
+	
 	
 }

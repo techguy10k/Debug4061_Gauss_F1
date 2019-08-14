@@ -53,7 +53,9 @@ void User_main(void)
 //			HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_1);
 //			HAL_TIM_Base_Stop_IT(&htim2);
 //		while(1);
-		Check();
+	//	Check();
+		//AutoTurnFire();
+		DealAdvance2();
 //		d233 = Get_CoordinateXResult();
 		//turn();
 		//while(1);
