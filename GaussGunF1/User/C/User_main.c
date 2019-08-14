@@ -56,8 +56,8 @@ void User_main(void)
 //		Locate_RunStep(0,800,500);
 		//HAL_Delay(1000);
 
-		AutoTurnFire();
-		//DealAdvance2();
+		//AutoTurnFire();
+		DealAdvance2();
 
 		//Check();
 //		d233 = Get_CoordinateXResult();

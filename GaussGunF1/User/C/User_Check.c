@@ -253,7 +253,7 @@ while(1)
 
 			if(flag==0)
 	{
-		HAL_Delay(50);
+		HAL_Delay(100);
 		stop=0;
 	}
 	Locate_RunStep(flag1,800,100);
