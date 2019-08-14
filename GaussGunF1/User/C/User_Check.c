@@ -66,9 +66,7 @@ void Check(void)
 				DealBasic3();
 			}
 			else if(KeyPressVal == 4)
-			{
-				//stop_flag=0;
-				
+			{				
 			  DealAdvance1();
 			}
 			else if(KeyPressVal == 5)
@@ -87,8 +85,10 @@ void DealBasic1(void)
 	HAL_Delay(10);
 	LCD_WriteLine((uint8_t*)Basic1Table,12,0,0);
 	LCD_WriteLine((uint8_t*)Basic1FireTable,21,1,0);
+	//等待按键按下
 	while(Key_scan() != 0);	
 	while(Key_scan() == 0);
+	//直接开火
 	GaussGun_Fire(4350);
 	HAL_Delay(2000);
 	LCD_Clear();
@@ -103,6 +103,7 @@ void DealBasic2(void)
 	LCD_WriteLine((uint8_t*)Basic2Table,15,0,0);
 	LCD_WriteLine((uint8_t*)Basic2PleaseInputTable,30,1,0);
 	
+	//距离是三位的 输入完毕才会显示
 	
 	Distant += DigitDialIn() * 100;
 	Distant += DigitDialIn() * 10;
@@ -114,6 +115,8 @@ void DealBasic2(void)
 	LCD_Display8_8Number(Distant % 10);
 	
 	LCD_WriteLine((uint8_t*)Basic1FireTable,21,3,0);
+	
+	//输入完三个后 再按一任意按键开火
 	
 	while(Key_scan() != 0);	
 	while(Key_scan() == 0);
@@ -139,6 +142,10 @@ void DealBasic3(void)
 	LCD_WriteLine((uint8_t*)Basic3Table,23,0,0);
 	LCD_WriteLine((uint8_t*)Basic3InputAngleTable,20,1,0);
 	
+	//进入模式以后首先输入角度正负方向
+	//S4 + 
+	//S8 -
+	
 	while(Key_scan() != 0);
 	while(Key_scan() == 0);
 	
@@ -146,7 +153,7 @@ void DealBasic3(void)
 	if((KeyVal_Pos_Or_Neg != 4) && (KeyVal_Pos_Or_Neg != 8))
 	{
 		LCD_Clear();
-		HAL_Delay(10);
+		HAL_Delay(2000);
 		return;
 	}
 	
@@ -160,7 +167,7 @@ void DealBasic3(void)
 	}
 	
 	Angle += DigitDialIn() * 10;
-	Angle += DigitDialIn() * 10;
+	Angle += DigitDialIn();
 	if(KeyVal_Pos_Or_Neg == 8)
 	{
 		Angle = -Angle;
@@ -242,9 +249,15 @@ void DealAdvance2(void)
 {
 	volatile float Set_PWM;
 	LCD_Clear();
+	HAL_Delay(10);
 	
-//	while(Key_scan() != 0);	
-	//	while(Key_scan() == 0);	
+	LCD_WriteLine((uint8_t*)Advance1Table,22,0,0);
+	LCD_WriteLine((uint8_t*)Basic1FireTable,21,1,0);
+	
+	while(Key_scan() != 0);	
+	while(Key_scan() == 0);
+
+	
 	Set_PWM = (uint16_t)((-5.4257*250 + 2663.7) * 1.2);
 	__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,Set_PWM);
 	

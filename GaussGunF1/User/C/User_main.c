@@ -57,9 +57,9 @@ void User_main(void)
 		//HAL_Delay(1000);
 
 		//AutoTurnFire();
-		DealAdvance2();
+		//DealAdvance2();
 
-		//Check();
+		Check();
 //		d233 = Get_CoordinateXResult();
 		//turn();
 		//while(1);
