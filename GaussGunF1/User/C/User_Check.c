@@ -247,8 +247,12 @@ void DealAdvance2(void)
 	volatile float Set_PWM;
 	LCD_Clear();
 	
-//	while(Key_scan() != 0);	
-	//	while(Key_scan() == 0);	
+	while(Key_scan() != 0);	
+	while(Key_scan() == 0)
+	{}
+		LCD_WriteLine((uint8_t*)Advance1Table,22,0,0);
+
+	LCD_WriteLine((uint8_t*)Basic1FireTable,21,1,0);
 	Set_PWM = (uint16_t)(-105.83*2.5 + 1324.2);
 	__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,Set_PWM);
 	
@@ -410,7 +414,7 @@ void AutoTurnFire(void)
 	
 	HAL_Delay(2000);
 	distant = _GetDistantResults - 0.30;
-	DistantFire((uint16_t)(distant * 100));
+	DistantFire((uint16_t)(distant)*100);
 	HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_10);
 	stop_flag0=1;
 }
