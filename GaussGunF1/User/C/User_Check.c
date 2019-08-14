@@ -158,7 +158,7 @@ void DealBasic3(void)
 	}
 	
 	Angle += DigitDialIn() * 10;
-	Angle += DigitDialIn() * 10;
+	Angle += DigitDialIn() * 1;
 	if(KeyVal_Pos_Or_Neg == 8)
 	{
 		Angle = -Angle;
