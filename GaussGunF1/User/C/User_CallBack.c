@@ -1,13 +1,12 @@
 #include "User_CallBack.h"
 
-
+#include "User_Check.h"
 //私有函数申明
 
 
 //公有远程变量申明
 extern uint8_t _GetErrorRXBuffer[7];
-
-
+extern int adv2;
 
 /* 串口总回调函数 */
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
@@ -23,6 +22,13 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 	if(huart->Instance == USART1)
 	{
 		_GetErrorUartCallBack();
+		if(adv2==1)
+		{
+			if(Get_CoordinateXResult()>295&&Get_CoordinateXResult()<300)
+			{
+				AutoTurnFire();
+			}
+		}
 		//User_NewDistantUart_Init();
 	}
 	

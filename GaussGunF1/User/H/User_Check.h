@@ -3,6 +3,7 @@
 
 
 void Check(void);
+void AutoTurnFire(void);
 
 
 #endif

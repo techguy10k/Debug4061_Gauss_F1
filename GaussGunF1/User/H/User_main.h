@@ -11,5 +11,6 @@
 
 
 void User_main(void);
+void DealAdvance1(void);
 
 #endif

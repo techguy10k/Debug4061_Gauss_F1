@@ -28,6 +28,7 @@ int stop_flag=0;
 
 void User_main(void)
 {
+	int i=0;
 	User_GetErrorUart_Init();
 	User_DebugUart_Init();
 	User_DistantUart_Init();
@@ -35,7 +36,7 @@ void User_main(void)
 	HAL_TIM_PWM_Start(&htim1,TIM_CHANNEL_1);
 	LCD_Init();
 	LCD_UpdateAllPixel((uint8_t*)LCDtable_NVIDIA);
-	HAL_Delay(1000);
+	HAL_Delay(3000);
 	
 	/* 让屏幕全白 */
 	LCD_Clear();
@@ -45,8 +46,20 @@ void User_main(void)
 //		__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,500);
 //		HAL_Delay(2000);
 //		__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,2500);
-//		HAL_Delay(2000);  
-		Check();
+//		HAL_Delay(2000); 
+		
+			
+//		stop = 0;
+//		Locate_RunStep(1,800,500);
+//		HAL_Delay(4000);
+//		stop = 0;
+//		Locate_RunStep(0,800,500);
+		//HAL_Delay(1000);
+
+		AutoTurnFire();
+		//DealAdvance2();
+
+		//Check();
 //		d233 = Get_CoordinateXResult();
 		//turn();
 		//while(1);

@@ -33,4 +33,6 @@ gaussgunf1/user_callback.o: ..\User\C\User_CallBack.c \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h ..\Inc\usart.h \
   ..\Inc\main.h ..\User\H\User_Uart.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h ..\User\H\User_JY901.h \
-  ..\Inc\main.h
+  ..\Inc\main.h ..\User\H\LCD.h ..\Inc\spi.h ..\User\H\KeyPad.h \
+  ..\User\H\GaussGun.h ..\User\H\MricroStepDriver.h ..\User\H\sys.h \
+  ..\Inc\tim.h ..\User\H\Timer.h ..\Inc\gpio.h ..\User\H\User_Check.h

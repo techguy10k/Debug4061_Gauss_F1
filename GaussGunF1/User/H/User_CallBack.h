@@ -12,5 +12,11 @@
 //用户头文件
 #include "User_Uart.h"
 #include "User_JY901.h"
+#include "LCD.h"
+#include "KeyPad.h"
+#include "GaussGun.h"
+#include "MricroStepDriver.h"
+
+#include "tim.h"
 
 #endif
