@@ -26,6 +26,7 @@ extern const uint8_t Basic2PleaseInputTable[];
 extern const uint8_t Basic2DistantDisplay[];
 extern const uint8_t Basic3InputAngleTable[];
 extern const uint8_t Basic3InputDistantTable[];
+extern const uint8_t Advance3Table[];
 
 void DistantFire(uint16_t distant_cm);
 
@@ -182,18 +183,18 @@ void DealBasic3(void)
 		Angle = -Angle;
 	}
 	
-	if(Angle > 30)
+	if(Angle > 35)
 	{
-		Angle = 30;
+		Angle = 35;
 	}
 	
-	if(Angle < -30)
+	if(Angle < -35)
 	{
-		Angle = -30;
+		Angle = -35;
 	}
 	
-	LCD_Display8_8Number(Angle / 10);
-	LCD_Display8_8Number(Angle % 10);
+	LCD_Display8_8Number(abs(Angle) / 10);
+	LCD_Display8_8Number(abs(Angle) % 10);
 
 	LCD_WriteLine((uint8_t*)Basic3InputDistantTable,22,2,0);
 	Distant += DigitDialIn() * 100;
@@ -308,7 +309,7 @@ void DealAdvance3(void)
 	
 	LCD_Clear();
 	HAL_Delay(10);
-	LCD_WriteLine((uint8_t*)Advance1Table,23,0,0);
+	LCD_WriteLine((uint8_t*)Advance3Table,21,0,0);
 	LCD_WriteLine((uint8_t*)Basic1FireTable,21,1,0);
 	//等待按键按下
 	while(Key_scan() != 0);	
