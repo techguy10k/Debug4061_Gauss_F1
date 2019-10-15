@@ -28,4 +28,4 @@ gaussgunf1/lcd.o: ..\User\C\LCD.c ..\User\H\LCD.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h \
   ..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h ..\Inc\main.h \
-  ..\Inc\spi.h ..\Inc\main.h
+  ..\Inc\spi.h ..\Inc\main.h ..\User\H\User_Font.h

@@ -1,7 +1,11 @@
 #include "LCD.h"
+#include "User_Font.h"
 
 const uint8_t NumberTable8_8[];
-
+extern const unsigned char asc2_1206[95][12];
+extern const unsigned char asc2_1608[95][16];
+extern const unsigned char asc2_2412[95][36];
+uint8_t gram[192][8]={0};
 void LCD_WriteCommand(uint8_t Command)
 {
   HAL_GPIO_WritePin(LCD_CS_GPIO_Port,LCD_CS_Pin,GPIO_PIN_RESET);
@@ -72,8 +76,104 @@ void LCD_UpdateAllPixel(uint8_t* Address)
 	
 	
 } 
-
-
+void LCD_ShowChar(uint8_t x,uint8_t y,uint8_t chr,uint8_t size)
+{      			    
+	uint8_t temp,t,t1;
+	uint8_t y0=y;
+	uint8_t csize=(size/8+((size%8)?1:0))*(size/2);		//得到字体一个字符对应点阵集所占的字节数
+	chr=chr-' ';//得到偏移后的值		 
+    for(t=0;t<csize;t++)
+    {   
+		if(size==12)temp=asc2_1206[chr][t]; 	 	//调用1206字体
+		else if(size==16)temp=asc2_1608[chr][t];	//调用1608字体
+		else if(size==24)temp=asc2_2412[chr][t];	//调用2412字体
+		else return;								//没有的字库
+        for(t1=0;t1<8;t1++)
+		{
+			if(temp&0x80)
+				LCD_DrawPoint(x,y,1);
+				//continue;
+//			else
+//			LCD_DrawPoint(x,y,1);
+			temp<<=1;
+			y++;
+			if((y-y0)==size)
+			{
+				y=y0;
+				x++;
+				break;
+			}
+		}  	 
+    }          
+}
+void LCD_DrawPoint(uint8_t x,uint8_t y,uint16_t mode)
+{
+	int t1=0,t2=0;
+	uint8_t m=0x01,m1;
+	uint8_t n=0xfe,n1;
+	LCD_SetPointerPositon(0,0);
+	LCD_SetColumnAddress(x);
+	t1=y/8;
+	t2=y%8;
+	if(t2!=0)
+	{
+		//t1++;
+	}
+	//t2=8-t2;
+	if(mode==1)
+	{
+	m1=m<<t2;
+	LCD_SetPageAddress(t1);
+	gram[x][t1]|=m1;
+	}
+	else if(mode == 0)
+	{
+		n1=n<<t2;
+		LCD_SetPageAddress(t1);
+		gram[x][t1]&=n1;
+	}
+	//LCD_SetPointerPositon(0,0);
+	LCD_WriteDdata(gram[x][t1]);
+	
+	
+////	LCD_SetPageAddress(y);
+//	LCD_WriteDdata(0x01);
+//	LCD_SetPointerPositon(0,0);
+//	LCD_WriteDdata(0x03);
+//	int t,t1,t2,x1,x2;
+//	uint8_t m=0x01,m1;
+//	t=(int)x*(int)y;
+//	
+//	t1=t/8;
+//	t2=t%8;
+//	
+//	x1=t1/192;
+//	x2=t1%192;
+//	
+//	m1=m<<t2;
+//	if(x2!=0)
+//	{
+//		x1++;
+//	}
+//	LCD_SetColumnAddress(x2);
+//	LCD_SetPageAddress(x1);
+//	LCD_WriteDdata(m1);
+	
+}
+void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p)
+{         
+	u8 x0=x;
+	width+=x;
+	height+=y;
+    while((*p<='~')&&(*p>=' '))
+    {       
+        if(x>=width){x=x0;y+=size;}
+        if(y>=height)break;
+        LCD_ShowChar(x,y,*p,size);
+        x+=size/2;
+        p++;
+    }  
+}
 void LCD_Init(void)
 {
   /* LCD复位电平要求 RST低电平有效 至少1ms */

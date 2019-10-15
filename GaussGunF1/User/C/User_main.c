@@ -28,6 +28,7 @@ int stop_flag=0;
 
 void User_main(void)
 {
+	uint8_t a[]={"Hello World"};
 	User_GetErrorUart_Init();
 	User_DebugUart_Init();
 	User_DistantUart_Init();
@@ -46,10 +47,13 @@ void User_main(void)
 //		HAL_Delay(2000);
 //		__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,2500);
 //		HAL_Delay(2000);  
-		Check();
+		//Check();
 //		d233 = Get_CoordinateXResult();
 		//turn();
 		//while(1);
+		//LCD_ShowChar(96,4,'a',24);
+		LCD_ShowString(32,4,144,60,12,a);
+
 	}
 	
 }
