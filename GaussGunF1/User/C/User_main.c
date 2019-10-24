@@ -47,13 +47,13 @@ void User_main(void)
 //		HAL_Delay(2000);
 //		__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,2500);
 //		HAL_Delay(2000);  
-		//Check();
+		Check();
+		//HAL_UART_Transmit(&huart2,"a",sizeof("a"),100);
 //		d233 = Get_CoordinateXResult();
 		//turn();
 		//while(1);
 		//LCD_ShowChar(96,4,'a',24);
-		LCD_ShowString(32,4,144,60,12,a);
-
+		//LCD_ShowString(32,4,144,60,12,a);
 	}
 	
 }

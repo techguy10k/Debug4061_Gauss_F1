@@ -225,7 +225,15 @@ void LCD_Clear(void)
 	for(uint16_t Counter = 0;Counter < 1536;Counter ++)
 	{
 		LCD_WriteDdata(0x00);
+		
 	} 
+	for(int i=0;i<192;i++)
+	{
+	for(int j=0;j<8;j++)
+		{
+			gram[i][j]=0;
+		}
+	}
 	LCD_SetPointerPositon(0,0);
 }
 

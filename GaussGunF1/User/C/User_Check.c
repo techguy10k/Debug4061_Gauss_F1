@@ -39,7 +39,8 @@ void Check(void)
 	uint16_t KeyPressVal = 0;
 	
 	
-	LCD_WriteLine((uint8_t*)ModeSetTable,20,0,0);
+	//LCD_WriteLine((uint8_t*)ModeSetTable,20,0,0);
+	LCD_ShowString(0,0,192,12,12,"Please select mode");
 	//有按键按下
 	if(Key_scan() != 0x00)
 	{
@@ -51,7 +52,7 @@ void Check(void)
 			
 			if(KeyPressVal == 1)
 			{
-				DealBasic1();
+				//DealBasic1();
 			}
 			else if(KeyPressVal == 2)
 			{
@@ -59,15 +60,15 @@ void Check(void)
 			}
 			else if(KeyPressVal == 3)
 			{
-				DealBasic3();
+				//DealBasic3();
 			}
 			else if(KeyPressVal == 4)
 			{
-			  DealAdvance1();
+			  //DealAdvance1();
 			}
 			else if(KeyPressVal == 5)
 			{
-				DealAdvance2();
+				//DealAdvance2();
 			}
 		}
 	}
@@ -94,20 +95,12 @@ void DealBasic2(void)
 	
 	LCD_Clear();
 	HAL_Delay(10);
-	LCD_WriteLine((uint8_t*)Basic2Table,15,0,0);
-	LCD_WriteLine((uint8_t*)Basic2PleaseInputTable,30,1,0);
-	
-	
+	LCD_ShowString(0,0,168,12,12,"Base 2 Distant");
+	LCD_ShowString(0,20,168,24,12,"Please ready for distant input");
 	Distant += DigitDialIn() * 100;
 	Distant += DigitDialIn() * 10;
 	Distant += DigitDialIn();
 	
-	LCD_WriteLine((uint8_t*)Basic2DistantDisplay,10,2,0);
-	LCD_Display8_8Number(Distant / 100);
-	LCD_Display8_8Number(Distant % 100 / 10);
-	LCD_Display8_8Number(Distant % 10);
-	
-	LCD_WriteLine((uint8_t*)Basic1FireTable,21,3,0);
 	
 	while(Key_scan() != 0);	
 	while(Key_scan() == 0);
