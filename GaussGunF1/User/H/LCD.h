@@ -48,5 +48,6 @@ void LCD_ShowChar(uint8_t x,uint8_t y,uint8_t chr,uint8_t size);
 void LCD_DrawPoint(uint8_t x,uint8_t y,uint16_t mode);
 /*显示一个字符串*/
 void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p);
-
+/*显示一串数字*/
+void LCD_ShowNum(uint8_t x,uint8_t y,u32 num,uint8_t len,uint8_t size);
 #endif

@@ -3,6 +3,6 @@
 
 
 void Check(void);
-
+void FinalMomentum(void);
 
 #endif

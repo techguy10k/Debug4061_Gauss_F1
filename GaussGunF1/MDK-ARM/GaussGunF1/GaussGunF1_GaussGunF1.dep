@@ -708,7 +708,7 @@ I (..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_spi.h)(0x5D3EE781)
 I (..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x5D3EE781)
 I (..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x5D3EE781)
 I (..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x5D3EE781)
-F (..\User\C\User_main.c)(0x5DAEEFF2)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User/H-I./RTE/_GaussGunF1-IC:/Users/pan39/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/Core/Include-IC:/Users/pan39/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.3.0/Device/Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DUSE_HAL_DRIVER -DSTM32F103xE-o gaussgunf1/user_main.o -MD)
+F (..\User\C\User_main.c)(0x5DB546D8)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User/H-I./RTE/_GaussGunF1-IC:/Users/pan39/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/Core/Include-IC:/Users/pan39/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.3.0/Device/Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DUSE_HAL_DRIVER -DSTM32F103xE-o gaussgunf1/user_main.o -MD)
 I (..\User\H\User_main.h)(0x5DA41963)
 I (..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x5D3EE781)
 I (..\Inc\stm32f1xx_hal_conf.h)(0x5DAA9D21)
@@ -747,19 +747,19 @@ I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x5CEB78E8)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5CEB78EA)
 I (..\Inc\usart.h)(0x5DAED6A3)
 I (..\Inc\tim.h)(0x5DAED6A3)
-I (..\User\H\LCD.h)(0x5DA5449F)
+I (..\User\H\LCD.h)(0x5DB5499B)
 I (..\User\H\User_Uart.h)(0x5D504B5C)
 I (..\User\H\User_PID.h)(0x5D504B5C)
 I (..\User\H\User_PWM.h)(0x5D504B5C)
 I (..\User\H\KeyPad.h)(0x5D504B5C)
 I (..\User\H\GaussGun.h)(0x5D504B5C)
-I (..\User\H\User_Check.h)(0x5D504B5C)
+I (..\User\H\User_Check.h)(0x5DB54654)
 I (..\User\H\MricroStepDriver.h)(0x5D504B5C)
 I (..\User\H\sys.h)(0x5D504B5C)
 I (..\User\H\Timer.h)(0x5D504B5C)
 I (..\User\H\User_JY901.h)(0x5D504B5C)
-F (..\User\C\LCD.c)(0x5DAEDB58)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User/H-I./RTE/_GaussGunF1-IC:/Users/pan39/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/Core/Include-IC:/Users/pan39/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.3.0/Device/Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DUSE_HAL_DRIVER -DSTM32F103xE-o gaussgunf1/lcd.o -MD)
-I (..\User\H\LCD.h)(0x5DA5449F)
+F (..\User\C\LCD.c)(0x5DB5499B)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User/H-I./RTE/_GaussGunF1-IC:/Users/pan39/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/Core/Include-IC:/Users/pan39/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.3.0/Device/Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DUSE_HAL_DRIVER -DSTM32F103xE-o gaussgunf1/lcd.o -MD)
+I (..\User\H\LCD.h)(0x5DB5499B)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5CEB78E8)
 I (..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x5D3EE781)
 I (..\Inc\stm32f1xx_hal_conf.h)(0x5DAA9D21)
@@ -792,6 +792,7 @@ I (..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x5D3EE781)
 I (..\Inc\main.h)(0x5DAA9D21)
 I (..\Inc\spi.h)(0x5DAA9D1F)
 I (..\User\H\User_Font.h)(0x5DA41A27)
+I (C:\Keil_v5\ARM\ARMCLANG\include\math.h)(0x5CEB78EA)
 F (..\User\C\User_Uart.c)(0x5D504B5C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User/H-I./RTE/_GaussGunF1-IC:/Users/pan39/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/Core/Include-IC:/Users/pan39/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.3.0/Device/Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DUSE_HAL_DRIVER -DSTM32F103xE-o gaussgunf1/user_uart.o -MD)
 I (..\User\H\User_Uart.h)(0x5D504B5C)
 I (..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x5D3EE781)
@@ -1011,9 +1012,9 @@ I (..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h)(0x5D3EE781)
 I (..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h)(0x5D3EE781)
 I (..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_uart.h)(0x5D3EE781)
 I (..\Inc\tim.h)(0x5DAED6A3)
-F (..\User\C\User_Check.c)(0x5DAEDA21)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User/H-I./RTE/_GaussGunF1-IC:/Users/pan39/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/Core/Include-IC:/Users/pan39/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.3.0/Device/Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DUSE_HAL_DRIVER -DSTM32F103xE-o gaussgunf1/user_check.o -MD)
-I (..\User\H\User_Check.h)(0x5D504B5C)
-I (..\User\H\LCD.h)(0x5DA5449F)
+F (..\User\C\User_Check.c)(0x5DB549B8)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m3 -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-3 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../User/H-I./RTE/_GaussGunF1-IC:/Users/pan39/AppData/Local/Arm/Packs/ARM/CMSIS/5.6.0/CMSIS/Core/Include-IC:/Users/pan39/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.3.0/Device/Include-D__UVISION_VERSION="528" -D_RTE_ -DSTM32F10X_HD -DUSE_HAL_DRIVER -DSTM32F103xE -DUSE_HAL_DRIVER -DSTM32F103xE-o gaussgunf1/user_check.o -MD)
+I (..\User\H\User_Check.h)(0x5DB54654)
+I (..\User\H\LCD.h)(0x5DB5499B)
 I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5CEB78E8)
 I (..\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h)(0x5D3EE781)
 I (..\Inc\stm32f1xx_hal_conf.h)(0x5DAA9D21)
@@ -1134,14 +1135,14 @@ I (..\Inc\main.h)(0x5DAA9D21)
 I (..\User\H\Timer.h)(0x5D504B5C)
 I (..\Inc\gpio.h)(0x5DAA9D1E)
 F (..\User\H\User_main.h)(0x5DA41963)()
-F (..\User\H\LCD.h)(0x5DA5449F)()
+F (..\User\H\LCD.h)(0x5DB5499B)()
 F (..\User\H\User_Uart.h)(0x5D504B5C)()
 F (..\User\H\User_PWM.h)(0x5D504B5C)()
 F (..\User\H\User_PID.h)(0x5D504B5C)()
 F (..\User\H\User_CallBack.h)(0x5D504B5C)()
 F (..\User\H\KeyPad.h)(0x5D504B5C)()
 F (..\User\H\GaussGun.h)(0x5D504B5C)()
-F (..\User\H\User_Check.h)(0x5D504B5C)()
+F (..\User\H\User_Check.h)(0x5DB54654)()
 F (..\User\H\MricroStepDriver.h)(0x5D504B5C)()
 F (..\User\H\sys.h)(0x5D504B5C)()
 F (..\User\H\Timer.h)(0x5D504B5C)()

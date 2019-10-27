@@ -40,7 +40,7 @@ void User_main(void)
 	
 	/* 让屏幕全白 */
 	LCD_Clear();
-
+__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,2500);
 	while(1)
 	{
 //		__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,500);
@@ -48,6 +48,7 @@ void User_main(void)
 //		__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,2500);
 //		HAL_Delay(2000);  
 		Check();
+		//OLED_ShowNum(0,0,12,2,12);
 		//HAL_UART_Transmit(&huart2,"a",sizeof("a"),100);
 //		d233 = Get_CoordinateXResult();
 		//turn();

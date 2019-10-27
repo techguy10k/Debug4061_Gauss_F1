@@ -1,6 +1,6 @@
 #include "LCD.h"
 #include "User_Font.h"
-
+#include "math.h"
 const uint8_t NumberTable8_8[];
 extern const unsigned char asc2_1206[95][12];
 extern const unsigned char asc2_1608[95][16];
@@ -160,6 +160,25 @@ void LCD_DrawPoint(uint8_t x,uint8_t y,uint16_t mode)
 //	LCD_WriteDdata(m1);
 	
 }
+void LCD_ShowNum(uint8_t x,uint8_t y,u32 num,uint8_t len,uint8_t size)
+{         	
+	uint8_t t,temp;
+	uint8_t enshow=0;						   
+	for(t=0;t<len;t++)
+	{
+		temp=(int)(num/pow(10,len-t-1))%10;
+		if(enshow==0&&t<(len-1))
+		{
+			if(temp==0)
+			{
+				LCD_ShowChar(x+(size/2)*t,y,' ',size);
+				continue;
+			}else enshow=1; 
+		 	 
+		}
+	 	LCD_ShowChar(x+(size/2)*t,y,temp+'0',size); 
+	}
+} 
 void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p)
 {         
 	u8 x0=x;

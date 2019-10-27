@@ -21,6 +21,7 @@ extern const uint8_t Basic2PleaseInputTable[];
 extern const uint8_t Basic2DistantDisplay[];
 extern const uint8_t Basic3InputAngleTable[];
 extern const uint8_t Basic3InputDistantTable[];
+extern float _GetDistantResults;
 
 void DistantFire(uint16_t distant_cm);
 
@@ -97,22 +98,41 @@ void DealBasic2(void)
 	HAL_Delay(10);
 	LCD_ShowString(0,0,168,12,12,"Base 2 Distant");
 	LCD_ShowString(0,20,168,24,12,"Please ready for distant input");
-	Distant += DigitDialIn() * 100;
-	Distant += DigitDialIn() * 10;
-	Distant += DigitDialIn();
-	
-	
-	while(Key_scan() != 0);	
-	while(Key_scan() == 0);
+//	Distant += DigitDialIn() * 100;
+//	Distant += DigitDialIn() * 10;
+//	Distant += DigitDialIn();
+//	
+//	
+//	while(Key_scan() != 0);	
+//	while(Key_scan() == 0);
 
-	DistantFire(Distant);
-	
+	GaussGun_Fire(3000);
+	HAL_Delay(50);
+	FinalMomentum();
+	HAL_Delay(2000);
+	while(1);
 	LCD_Clear();
 	HAL_Delay(2000);
 	
 	
 }
-
+void FinalMomentum(void)
+{
+	float x1,x2,LastSpeed;
+	float CarMass=0,CarMomentum;
+	x1=_GetDistantResults;
+	HAL_Delay(50);
+	x2=_GetDistantResults;
+	LastSpeed=(x2-x1)/(50/1000);
+	CarMomentum=CarMass*LastSpeed;
+	LCD_Clear();
+	HAL_Delay(2000);
+	
+	LCD_ShowString(0,0,168,12,24,"Car Speed ");
+	LCD_ShowNum(80,0,(int)LastSpeed,5,24);
+	LCD_ShowString(0,24,168,12,24,"Car Momentum ");
+	LCD_ShowNum(130,24,(int)CarMomentum,5,24);
+}
 
 void DealBasic3(void)
 {
