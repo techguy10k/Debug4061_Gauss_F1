@@ -4,11 +4,13 @@
 #include "GaussGun.h"
 #include "MricroStepDriver.h"
 #include "User_Uart.h"
+#include "math.h"
 
 #include "tim.h"
 
 extern int stop_flag;
 extern float  _GetDistantResults;
+uint16_t timers1=0;
 
 extern const uint8_t Basic1Table[];
 extern const uint8_t Basic2Table[];
@@ -53,7 +55,7 @@ void Check(void)
 			
 			if(KeyPressVal == 1)
 			{
-				//DealBasic1();
+				DealBasic2();
 			}
 			else if(KeyPressVal == 2)
 			{
@@ -61,15 +63,15 @@ void Check(void)
 			}
 			else if(KeyPressVal == 3)
 			{
-				//DealBasic3();
+				DealBasic2();
 			}
 			else if(KeyPressVal == 4)
 			{
-			  //DealAdvance1();
+			  DealBasic2();
 			}
 			else if(KeyPressVal == 5)
 			{
-				//DealAdvance2();
+				DealBasic2();
 			}
 		}
 	}
@@ -89,51 +91,116 @@ void DealBasic1(void)
 	HAL_Delay(2000);
 	LCD_Clear();
 }
-
+//void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+//{
+//	if(GPIO_Pin==SpeedInput_Pin)
+//	{
+//		TIM4->CNT=0;
+//		HAL_TIM_Base_Start(&htim4);
+//		
+//		while(TIM4->CNT<=50)
+//		{}
+//		
+//		while((HAL_GPIO_ReadPin(SpeedInput_GPIO_Port,SpeedInput_Pin) == GPIO_PIN_SET) && (TIM4->CNT<=65500))
+//		{
+//		}
+//		HAL_TIM_Base_Stop(&htim4);
+//		timers1=TIM4->CNT;
+//	}
+//}
+	
 void DealBasic2(void)
 {
-	volatile uint16_t Distant = 0; 
-	
+	volatile float Distant = 0; 
+	float temp;
 	LCD_Clear();
 	HAL_Delay(10);
 	LCD_ShowString(0,0,168,12,12,"Base 2 Distant");
-	LCD_ShowString(0,20,168,24,12,"Please ready for distant input");
-//	Distant += DigitDialIn() * 100;
-//	Distant += DigitDialIn() * 10;
-//	Distant += DigitDialIn();
+	LCD_ShowString(0,20,168,24,12,"Please ready for speed input");
+	temp= DigitDialIn();
+	Distant += temp;
+	LCD_ShowNum(0,32,temp,1,16);
+	LCD_ShowChar(16,32,'.',16);
+	temp= DigitDialIn();
+	Distant += temp / 10;
+	LCD_ShowNum(32,32,temp,1,16);
+	temp= DigitDialIn();
+	Distant += temp / 100;
+	LCD_ShowNum(48,32,temp,1,16);
 //	
 //	
-//	while(Key_scan() != 0);	
-//	while(Key_scan() == 0);
+	while(Key_scan() != 0);	
+	while(Key_scan() == 0);
+  //HAL_EXTI_ClearPending();
+  //HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);
+	//y = -234.78x5 + 6154.6x4 - 64299x3 + 334512x2 - 866729x + 898922
 
-	GaussGun_Fire(3000);
-	HAL_Delay(50);
-	FinalMomentum();
-	HAL_Delay(2000);
-	while(1);
+	//GaussGun_Fire((-Distant+11.096)/0.0017);
+	GaussGun_Fire(-234.78*pow(Distant,5) + 6154.6*pow(Distant,4) - 64299*pow(Distant,3) + 334512*pow(Distant,2) - 866729*Distant + 898922);
+	LCD_Clear();
+	//GaussGun_Fire(4000);
+	//DistantFire(Distant);
+	//y = -0.0017x + 11.096
+	HAL_TIM_Base_Start(&htim4);
+	TIM4->CNT=0;
+	while(1)
+	{
+		if(HAL_GPIO_ReadPin(speedinput_GPIO_Port,speedinput_Pin)==GPIO_PIN_RESET)
+			break;
+	}
+	//while((HAL_GPIO_ReadPin(speedinput_GPIO_Port,speedinput_Pin)==GPIO_PIN_SET)&&TIM4->CNT<65500);
+	TIM4->CNT=0;
+	while((HAL_GPIO_ReadPin(speedinput_GPIO_Port,speedinput_Pin)==GPIO_PIN_RESET)&&TIM4->CNT<65500);
+	HAL_TIM_Base_Stop(&htim4);
+	//if(TIM4->CNT>=65499)
+	//LCD_Output_Float(0,0,"cnt",TIM4->CNT);
+	//while(1);
+	BulletSpeed();
+	//LCD_Clear();
+	//while(1);
+	//HAL_Delay(50);
+	//FinalMomentum();
+	
+	HAL_Delay(5000);
+	//while(1);
 	LCD_Clear();
 	HAL_Delay(2000);
+	NVIC_SystemReset();
 	
-	
+}
+void BulletSpeed(void)
+{
+	float BulletLong=0.024,Speed=0,BulletMass=0.01135,BulletMomentum=0;
+	Speed=BulletLong/((float)TIM4->CNT/1000000.0);
+	BulletMomentum=Speed*BulletMass;
+	LCD_Output_Float(0,0,"buttle speed",Speed);
+	LCD_Output_Float(0,16,"Momentum",BulletMomentum);
+	//HAL_TIM_Base_Stop(&htim4);
+	TIM4->CNT=0;
+	//HAL_TIM_Base_Stop(&htim4);
+//	LCD_ShowNum(0,0,(int)Speed,5,16);
+//	LCD_ShowNum(0,16,(int)TIM4->CNT,5,16);
 }
 void FinalMomentum(void)
 {
 	float x1,x2,LastSpeed;
-	float CarMass=0,CarMomentum;
-	x1=_GetDistantResults;
-	HAL_Delay(50);
-	x2=_GetDistantResults;
-	LastSpeed=(x2-x1)/(50/1000);
+	float CarMass=0.18696,CarMomentum;
+	x1=_GetDistantResults*1000;
+	HAL_Delay(1000);
+	x2=_GetDistantResults*1000;
+	LastSpeed=1000*((x1-x2)/(1000/1000));
 	CarMomentum=CarMass*LastSpeed;
 	LCD_Clear();
 	HAL_Delay(2000);
-	
-	LCD_ShowString(0,0,168,12,24,"Car Speed ");
-	LCD_ShowNum(80,0,(int)LastSpeed,5,24);
-	LCD_ShowString(0,24,168,12,24,"Car Momentum ");
-	LCD_ShowNum(130,24,(int)CarMomentum,5,24);
+	LCD_Output_Float(0,0,"Car Speed",LastSpeed);
+	LCD_Output_Float(0,16,"Car Momentum",CarMomentum);
+//	LCD_ShowString(0,0,168,12,16,"Car SpeedC,ar Speed ");
+//	LCD_ShowNum(80,0,LastSpeed,5,16);
+//	LCD_ShowString(0,16,168,12,16,"Car Momentum ");
+//	LCD_ShowNum(130,16,(int)CarMomentum,5,16);
+//	LCD_ShowNum(00,24,(int)x1,5,24);
+//	LCD_ShowNum(00,48,(int)x2,5,24);
 }
-
 void DealBasic3(void)
 {
 	volatile uint16_t Distant = 0;
@@ -318,19 +385,19 @@ void DistantFire(uint16_t distant_cm)
 {
 	volatile uint16_t Set_PWM = 0;
 	
-	if(distant_cm > 300)
-	{
-		distant_cm = 300;
-	}
-	if(distant_cm < 200)
-	{
-		distant_cm = 200;
-	}
+//	if(distant_cm > 300)
+//	{
+//		distant_cm = 300;
+//	}
+//	if(distant_cm < 200)
+//	{
+//		distant_cm = 200;
+//	}
 	
-	Set_PWM = (uint16_t)((-5.4257*distant_cm + 2663.7) * 1.2);
-	__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,Set_PWM);
-	HAL_Delay(1000);
-	GaussGun_Fire(4350);
+	// = (uint16_t)((-5.4257*distant_cm + 2663.7) * 1.2);
+	//__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,Set_PWM);
+	//HAL_Delay(1000);
+	GaussGun_Fire(-0.0017*distant_cm + 11.096);
 
 }
 

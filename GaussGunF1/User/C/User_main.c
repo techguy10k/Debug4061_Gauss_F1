@@ -40,6 +40,7 @@ void User_main(void)
 	
 	/* 让屏幕全白 */
 	LCD_Clear();
+	
 __HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,2500);
 	while(1)
 	{
@@ -55,6 +56,7 @@ __HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,2500);
 		//while(1);
 		//LCD_ShowChar(96,4,'a',24);
 		//LCD_ShowString(32,4,144,60,12,a);
+		//LCD_Output_Float(0,0,"pi",3.1415926535);
 	}
 	
 }

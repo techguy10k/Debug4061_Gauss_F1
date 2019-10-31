@@ -337,9 +337,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_HAL_DRIVER,STM32F103xE,USE_HAL_DRIVER,STM32F103xE</Define>
+              <Define>USE_HAL_DRIVER,STM32F103xE,USE_HAL_DRIVER,STM32F103xE,ARM_MATH_CM3</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;                                                            ../Drivers/STM32F1xx_HAL_Driver/Inc;                                                            ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;                                                            ../Drivers/CMSIS/Device/ST/STM32F1xx/Include;                                                            ../Drivers/CMSIS/Include;                                                            ..\User\H</IncludePath>
+              <IncludePath>../Inc; ../Drivers/STM32F1xx_HAL_Driver/Inc; ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy; ../Drivers/CMSIS/Device/ST/STM32F1xx/Include; ../Drivers/CMSIS/Include; ..\User\H; ..\Drivers\CMSIS\DSP\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

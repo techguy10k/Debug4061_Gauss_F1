@@ -103,7 +103,7 @@ int main(void)
   MX_TIM4_Init();
   MX_UART4_Init();
   /* USER CODE BEGIN 2 */
-
+	HAL_NVIC_DisableIRQ(EXTI9_5_IRQn);
   /* USER CODE END 2 */
 
   /* Infinite loop */

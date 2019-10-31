@@ -21,48 +21,36 @@ Target DLL:      CMSIS_AGDI.dll V1.31.18.0
 Dialog DLL:      TCM.DLL V1.36.2.0
  
 <h2>Project:</h2>
-C:\Users\pan39\Desktop\Singlechip\Debug4061_Gauss_F1\GaussGunF1\MDK-ARM\GaussGunF1.uvprojx
-Project File Date:  10/22/2019
+C:\Users\pan39\Desktop\Singlechip\stm32\Debug4061_Gauss_F1\GaussGunF1\MDK-ARM\GaussGunF1.uvprojx
+Project File Date:  10/31/2019
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.12', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'GaussGunF1'
-../User/C/User_Check.c(44): warning: passing 'char [19]' to parameter of type 'uint8_t *' (aka 'unsigned char *') converts between pointers to integer types with different sign [-Wpointer-sign]
+../User/C/User_Check.c(46): warning: passing 'char [19]' to parameter of type 'uint8_t *' (aka 'unsigned char *') converts between pointers to integer types with different sign [-Wpointer-sign]
         LCD_ShowString(0,0,192,12,12,"Please select mode");
                                      ^~~~~~~~~~~~~~~~~~~~
-../User/H\LCD.h(50): note: passing argument to parameter 'p' here
+../User/H\LCD.h(73): note: passing argument to parameter 'p' here
 void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p);
                                                                  ^
-../User/C/User_Check.c(99): warning: passing 'char [15]' to parameter of type 'uint8_t *' (aka 'unsigned char *') converts between pointers to integer types with different sign [-Wpointer-sign]
+../User/C/User_Check.c(118): warning: passing 'char [15]' to parameter of type 'uint8_t *' (aka 'unsigned char *') converts between pointers to integer types with different sign [-Wpointer-sign]
         LCD_ShowString(0,0,168,12,12,"Base 2 Distant");
                                      ^~~~~~~~~~~~~~~~
-../User/H\LCD.h(50): note: passing argument to parameter 'p' here
+../User/H\LCD.h(73): note: passing argument to parameter 'p' here
 void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p);
                                                                  ^
-../User/C/User_Check.c(100): warning: passing 'char [31]' to parameter of type 'uint8_t *' (aka 'unsigned char *') converts between pointers to integer types with different sign [-Wpointer-sign]
-        LCD_ShowString(0,20,168,24,12,"Please ready for distant input");
-                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-../User/H\LCD.h(50): note: passing argument to parameter 'p' here
+../User/C/User_Check.c(119): warning: passing 'char [29]' to parameter of type 'uint8_t *' (aka 'unsigned char *') converts between pointers to integer types with different sign [-Wpointer-sign]
+        LCD_ShowString(0,20,168,24,12,"Please ready for speed input");
+                                      ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../User/H\LCD.h(73): note: passing argument to parameter 'p' here
 void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p);
                                                                  ^
-../User/C/User_Check.c(131): warning: passing 'char [11]' to parameter of type 'uint8_t *' (aka 'unsigned char *') converts between pointers to integer types with different sign [-Wpointer-sign]
-        LCD_ShowString(0,0,168,12,24,"Car Speed ");
-                                     ^~~~~~~~~~~~
-../User/H\LCD.h(50): note: passing argument to parameter 'p' here
-void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p);
-                                                                 ^
-../User/C/User_Check.c(133): warning: passing 'char [14]' to parameter of type 'uint8_t *' (aka 'unsigned char *') converts between pointers to integer types with different sign [-Wpointer-sign]
-        LCD_ShowString(0,24,168,12,24,"Car Momentum ");
-                                      ^~~~~~~~~~~~~~~
-../User/H\LCD.h(50): note: passing argument to parameter 'p' here
-void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p);
-                                                                 ^
-5 warnings generated.
+3 warnings generated.
 compiling User_Check.c...
 linking...
-Program Size: Code=17984 RO-data=8256 RW-data=16 ZI-data=3288  
+Program Size: Code=21208 RO-data=11548 RW-data=16 ZI-data=3288  
 FromELF: creating hex file...
-"GaussGunF1\GaussGunF1.axf" - 0 Error(s), 5 Warning(s).
+"GaussGunF1\GaussGunF1.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -85,7 +73,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.3.0
-Build Time Elapsed:  00:00:00
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

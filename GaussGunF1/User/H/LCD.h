@@ -9,15 +9,38 @@
 //SCK  PA5
 //MOSI PA7
 
+#ifdef __cplusplus
+ extern "C" {
+#endif
 
+#include "arm_math.h"
 #include "stdint.h"
 #include "stm32f1xx_hal.h"
+#include <stdio.h>
 
 #include "main.h"
 #include "spi.h"
+
 #define u16 uint16_t
 #define u32 uint32_t
 #define u8 uint8_t
+
+#define USE_ONCHIP_FLASH_FONT 1
+#define hz16_num   50
+#define hz24_num   20
+
+struct typFNT_GB162
+{
+       uint8_t Index[2];	
+       int8_t Msk[32];
+};
+
+struct typFNT_GB242
+{
+       uint8_t Index[2];	
+       int8_t Msk[72];
+};
+
 /* LCD写命令 */
 void LCD_WriteCommand(uint8_t Command);
 /* LCD写数据 */
@@ -50,4 +73,8 @@ void LCD_DrawPoint(uint8_t x,uint8_t y,uint16_t mode);
 void LCD_ShowString(u16 x,u16 y,u16 width,u16 height,u8 size,u8 *p);
 /*显示一串数字*/
 void LCD_ShowNum(uint8_t x,uint8_t y,u32 num,uint8_t len,uint8_t size);
+/*教练这个函数有什么用*/
+void Gui_DrawFont_GBK16(uint16_t x, uint16_t y, uint16_t fc, uint16_t bc, uint8_t *s);
+/*显示一串字符和数字*/
+void LCD_Output_Float(uint16_t LineX, uint16_t LineY, char *string,float32_t string_to_display);
 #endif
