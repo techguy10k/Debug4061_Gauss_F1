@@ -11,7 +11,7 @@
 extern int stop_flag;
 extern float  _GetDistantResults;
 uint16_t timers1=0;
-
+float Speed=0,BulletMomentum=0,cnt;
 extern const uint8_t Basic1Table[];
 extern const uint8_t Basic2Table[];
 extern const uint8_t Basic3Table[];
@@ -55,7 +55,7 @@ void Check(void)
 			
 			if(KeyPressVal == 1)
 			{
-				DealBasic2();
+				DealBasic1();
 			}
 			else if(KeyPressVal == 2)
 			{
@@ -81,15 +81,9 @@ void Check(void)
 
 void DealBasic1(void)
 {
-	LCD_Clear();
-	HAL_Delay(10);
-	LCD_WriteLine((uint8_t*)Basic1Table,12,0,0);
-	LCD_WriteLine((uint8_t*)Basic1FireTable,21,1,0);
-	while(Key_scan() != 0);	
-	while(Key_scan() == 0);
-	GaussGun_Fire(4350);
+__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,2500);
 	HAL_Delay(2000);
-	LCD_Clear();
+	//LCD_Clear();
 }
 //void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 //{
@@ -111,8 +105,8 @@ void DealBasic1(void)
 	
 void DealBasic2(void)
 {
-	volatile float Distant = 0; 
-	float temp;
+	volatile double Distant = 0; 
+	double temp,xxx;
 	LCD_Clear();
 	HAL_Delay(10);
 	LCD_ShowString(0,0,168,12,12,"Base 2 Distant");
@@ -136,33 +130,47 @@ void DealBasic2(void)
 	//y = -234.78x5 + 6154.6x4 - 64299x3 + 334512x2 - 866729x + 898922
 
 	//GaussGun_Fire((-Distant+11.096)/0.0017);
-	GaussGun_Fire(-234.78*pow(Distant,5) + 6154.6*pow(Distant,4) - 64299*pow(Distant,3) + 334512*pow(Distant,2) - 866729*Distant + 898922);
-	LCD_Clear();
+	
+	GaussGun_Fire(-170.7*pow(Distant,3) + 2556.1*pow(Distant,2) - 13083*Distant + 26492);
+	
+//	xxx=-170.7*pow(Distant,3) + 2556.1*pow(Distant,2) - 13083*Distant + 26492;
+//	
+//	LCD_Output_Float(0,0,"time",xxx);
+//	LCD_Output_Float(16,0,"speed",Distant);
 	//GaussGun_Fire(4000);
 	//DistantFire(Distant);
 	//y = -0.0017x + 11.096
-	HAL_TIM_Base_Start(&htim4);
-	TIM4->CNT=0;
+	//HAL_TIM_Base_Start(&htim4);
+	//TIM4->CNT=0;
 	while(1)
 	{
 		if(HAL_GPIO_ReadPin(speedinput_GPIO_Port,speedinput_Pin)==GPIO_PIN_RESET)
+		{
+			HAL_TIM_Base_Init(&htim5);
+			TIM4->CNT=0;
+			HAL_TIM_Base_Start(&htim4);
 			break;
+		}
 	}
 	//while((HAL_GPIO_ReadPin(speedinput_GPIO_Port,speedinput_Pin)==GPIO_PIN_SET)&&TIM4->CNT<65500);
-	TIM4->CNT=0;
-	while((HAL_GPIO_ReadPin(speedinput_GPIO_Port,speedinput_Pin)==GPIO_PIN_RESET)&&TIM4->CNT<65500);
+	
+	while((HAL_GPIO_ReadPin(speedinput_GPIO_Port,speedinput_Pin)==GPIO_PIN_RESET)&&TIM4->CNT<65500)
+	{}
+	cnt=(float)TIM4->CNT;
 	HAL_TIM_Base_Stop(&htim4);
+	LCD_Clear();
 	//if(TIM4->CNT>=65499)
 	//LCD_Output_Float(0,0,"cnt",TIM4->CNT);
 	//while(1);
 	BulletSpeed();
 	//LCD_Clear();
-	//while(1);
-	//HAL_Delay(50);
-	//FinalMomentum();
+	//while(1);、
+	
+	HAL_Delay(500);
+	FinalMomentum();
 	
 	HAL_Delay(5000);
-	//while(1);
+	while(1);
 	LCD_Clear();
 	HAL_Delay(2000);
 	NVIC_SystemReset();
@@ -170,11 +178,12 @@ void DealBasic2(void)
 }
 void BulletSpeed(void)
 {
-	float BulletLong=0.024,Speed=0,BulletMass=0.01135,BulletMomentum=0;
-	Speed=BulletLong/((float)TIM4->CNT/1000000.0);
-	BulletMomentum=Speed*BulletMass;
-	LCD_Output_Float(0,0,"buttle speed",Speed);
-	LCD_Output_Float(0,16,"Momentum",BulletMomentum);
+	float BulletLong=0.024,BulletMass=0.01135;
+	LCD_Clear();
+	Speed=BulletLong/((float)cnt/1000000.0);
+	BulletMomentum=(Speed)*BulletMass;
+//	LCD_Output_Float(0,0,"buttle speed",Speed);
+//	LCD_Output_Float(0,16,"Momentum",BulletMomentum);
 	//HAL_TIM_Base_Stop(&htim4);
 	TIM4->CNT=0;
 	//HAL_TIM_Base_Stop(&htim4);
@@ -183,17 +192,24 @@ void BulletSpeed(void)
 }
 void FinalMomentum(void)
 {
-	float x1,x2,LastSpeed;
-	float CarMass=0.18696,CarMomentum;
-	x1=_GetDistantResults*1000;
+	float x1,x2,LastSpeed,cut;
+	float CarMass=0.18996+0.01135,CarMomentum;
+	x1=_GetDistantResults;
 	HAL_Delay(1000);
-	x2=_GetDistantResults*1000;
-	LastSpeed=1000*((x1-x2)/(1000/1000));
+	x2=_GetDistantResults;
+	LastSpeed=(x1-x2)/(1000/1000);
 	CarMomentum=CarMass*LastSpeed;
 	LCD_Clear();
 	HAL_Delay(2000);
 	LCD_Output_Float(0,0,"Car Speed",LastSpeed);
 	LCD_Output_Float(0,16,"Car Momentum",CarMomentum);
+	LCD_Output_Float(0,32,"buttle speed",Speed);
+	LCD_Output_Float(0,48,"Momentum",BulletMomentum);
+	HAL_Delay(10000);
+	LCD_Clear();
+	HAL_Delay(2000);
+	cut=((BulletMomentum-CarMomentum)/BulletMomentum)*100;
+	LCD_Output_Float(0,0,"difference",cut);
 //	LCD_ShowString(0,0,168,12,16,"Car SpeedC,ar Speed ");
 //	LCD_ShowNum(80,0,LastSpeed,5,16);
 //	LCD_ShowString(0,16,168,12,16,"Car Momentum ");

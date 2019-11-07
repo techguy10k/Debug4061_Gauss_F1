@@ -41,7 +41,6 @@ void User_main(void)
 	/* 让屏幕全白 */
 	LCD_Clear();
 	
-__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,2500);
 	while(1)
 	{
 //		__HAL_TIM_SET_COMPARE(&htim1,TIM_CHANNEL_1,500);
